@@ -36,6 +36,45 @@ public class Calculator {
 		}
 
 	}
+	/*
+	 *  this function will calculate the markup
+	 */
+	
+	public double CalculateMarkup(){
+
+		double totalprice = 0;
+		
+		double basetotal = this.base + basemarkup(); 
+		
+		totalprice = basetotal + addedmarkup(basetotal);
+		
+		return totalprice;
+	}
+
+
+	/*
+	 * this function will calculate the current base markup
+	 */
+	private double basemarkup() {
+		
+		return this.base * Markups.BASE.getValue();
+	}
+
+	/*
+	 * This function will calculate the additional markup on top of the base markup
+	 */
+	private double addedmarkup(double basetotal) {
+		
+		double workerm = basetotal * this.workers * Markups.WORKER.getValue();
+		
+		double extram = 0;
+		
+		for (Markups extra: this.markups){
+			
+			extram += basetotal * extra.getValue();
+		}
+		return workerm + extram ;
+	}
 	
 	
 }
