@@ -48,6 +48,10 @@ public class Calculator {
 		
 		totalprice = basetotal + addedmarkup(basetotal);
 		
+		DecimalFormat df = new DecimalFormat("#.00");
+		df.setRoundingMode(RoundingMode.HALF_UP);
+		totalprice = Double.parseDouble(df.format(totalprice));
+		
 		return totalprice;
 	}
 
